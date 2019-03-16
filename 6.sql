@@ -14,5 +14,6 @@ insert into `products` (`id`, `name`, `category_id`) VALUES
    ('5', 'Nuget', '3');
 
 --Question B)
-SELECT categories.id,categories.name,products.name FROM `products`
-JOIN `categories` on categories.id = products.category_id;
+SELECT categories.id,categories.name, GROUP_CONCAT(products.name) FROM `products`
+JOIN `categories` on categories.id = products.category_id
+GROUP BY categories.id
